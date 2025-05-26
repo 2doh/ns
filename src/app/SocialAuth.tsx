@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import googleIcon from "../image/icons/devicon_google.svg";
 import kakaoIcon from "../image/icons/ri_kakao-talk-fill.svg";
@@ -20,6 +22,10 @@ const SocialAuth = () => {
     },
   ];
 
+  const tempHandleClick = () => {
+    alert("미구현입니다");
+  };
+
   return (
     <div className="flex space-x-4">
       {btnArr.map((item, index) => (
@@ -27,6 +33,7 @@ const SocialAuth = () => {
           key={index}
           className="flex-1 py-1 rounded-lg flex justify-center items-center"
           style={{ backgroundColor: item.bgColor }}
+          onClick={tempHandleClick}
         >
           <Image src={item.icon} alt="icon" />
         </button>

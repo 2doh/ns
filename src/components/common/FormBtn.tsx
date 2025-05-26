@@ -1,12 +1,16 @@
 import React from "react";
 
-const FormBtn = () => {
+type FormBtnProps = {
+  title: string;
+};
+
+const FormBtn = (titleObj: FormBtnProps) => {
   return (
     <button
       type="submit"
       className="w-full py-2 rounded-lg text-white font-semibold bg-primary"
     >
-      로그인
+      {titleObj.title}
     </button>
   );
 };
