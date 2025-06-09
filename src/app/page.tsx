@@ -1,11 +1,18 @@
-import AuthForm from "@/components/auth/AuthForm";
+import { SigninFormData } from "@/schema/authSchema";
+import AuthForm from "./AuthForm";
 import AuthLink from "./AuthLink";
 import SocialAuth from "./SocialAuth";
 
+export type LabelItem = {
+  label: string;
+  type?: string;
+  name: keyof SigninFormData;
+};
+
 export default function Home() {
-  const labelArr = [
-    { label: "이메일", type: "email" },
-    { label: "비밀번호", type: "password" },
+  const labelArr: LabelItem[] = [
+    { label: "이메일", type: "email", name: "mail" },
+    { label: "비밀번호", type: "password", name: "pass" },
   ];
   const titleObj = { title: "로그인" };
 
