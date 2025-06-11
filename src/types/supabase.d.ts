@@ -34,24 +34,24 @@ export type Database = {
   };
   public: {
     Tables: {
-      Auth: {
+      user: {
         Row: {
-          email: string;
-          email_verified: boolean;
-          id: number;
-          username: string;
+          created_at: string;
+          email: string | null;
+          id: string;
+          name: string | null;
         };
         Insert: {
-          email: string;
-          email_verified?: boolean;
-          id?: number;
-          username: string;
+          created_at?: string;
+          email?: string | null;
+          id?: string;
+          name?: string | null;
         };
         Update: {
-          email?: string;
-          email_verified?: boolean;
-          id?: number;
-          username?: string;
+          created_at?: string;
+          email?: string | null;
+          id?: string;
+          name?: string | null;
         };
         Relationships: [];
       };
