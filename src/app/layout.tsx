@@ -29,14 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-          <div
-            className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8 space-y-6 border"
-            style={{ borderColor: "#e6e5e6" }}
-          >
-            {children}
-          </div>
-        </div>
+        <>
+          <div>{children}</div>
+        </>
         <Footer />
       </body>
     </html>

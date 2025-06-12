@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { LabelItem } from "./page";
 import { authSignin } from "@/apis/auth/login";
 import { useState } from "react";
+import { useNavigation } from "@/hooks/useNavigation";
 
 type AuthFormProps = {
   labelArr: LabelItem[];
@@ -17,6 +18,7 @@ type AuthFormProps = {
 
 const AuthForm = ({ labelArr, titleObj }: AuthFormProps) => {
   const [errMsg, setErrMsg] = useState("");
+  const { naviTo } = useNavigation();
 
   const {
     register,
@@ -30,6 +32,7 @@ const AuthForm = ({ labelArr, titleObj }: AuthFormProps) => {
     setErrMsg("");
     const result = await authSignin(formData);
     console.log(result);
+    naviTo("home");
   };
 
   return (
