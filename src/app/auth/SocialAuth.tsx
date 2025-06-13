@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import googleIcon from "../image/icons/devicon_google.svg";
-import kakaoIcon from "../image/icons/ri_kakao-talk-fill.svg";
-import naverIcon from "../image/icons/simple-icons_naver.svg";
+import googleIcon from "../../image/icons/devicon_google.svg";
+import kakaoIcon from "../../image/icons/ri_kakao-talk-fill.svg";
+import naverIcon from "../../image/icons/simple-icons_naver.svg";
 import Image from "next/image";
 
 const SocialAuth = () => {

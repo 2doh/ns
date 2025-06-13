@@ -8,6 +8,7 @@ import { LabelItem } from "./page";
 import { authSignin } from "@/apis/auth/login";
 import { useState } from "react";
 import { useNavigation } from "@/hooks/useNavigation";
+import { supabase } from "@/shared/supabase/supabase";
 
 type AuthFormProps = {
   labelArr: LabelItem[];
@@ -30,9 +31,33 @@ const AuthForm = ({ labelArr, titleObj }: AuthFormProps) => {
 
   const onSubmit = async (formData: SigninFormData) => {
     setErrMsg("");
+
     const result = await authSignin(formData);
-    console.log(result);
-    naviTo("home");
+
+    if (result.success === false) {
+      setErrMsg("이메일 또는 비밀번호를 확인해주세요.");
+      return;
+    }
+
+    const userId = result.session?.user?.id;
+
+    if (!userId) {
+      setErrMsg("유저 정보를 가져올 수 없습니다.");
+      return;
+    }
+
+    if (result.success === true && result.session?.access_token) {
+      console.log(result);
+      const { data, error } = supabase
+        .from("user")
+        .select("*")
+        .eq("id", result.session.user.id)
+        .single();
+      console.log(data);
+      console.log(error);
+      return;
+      // naviTo("/");
+    }
   };
 
   return (
@@ -54,6 +79,7 @@ const AuthForm = ({ labelArr, titleObj }: AuthFormProps) => {
           )}
         </div>
       ))}
+      <p className="text-sm mt-1 text-red-600">{errMsg}</p>
       <FormBtn title={titleObj.title} />
     </form>
   );
