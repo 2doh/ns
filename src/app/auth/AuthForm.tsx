@@ -9,6 +9,7 @@ import { authSignin } from "@/apis/auth/login";
 import { useState } from "react";
 import { useNavigation } from "@/hooks/useNavigation";
 import { supabase } from "@/shared/supabase/supabase";
+import { userAuthStore } from "@/store/userAuthStore";
 
 type AuthFormProps = {
   labelArr: LabelItem[];
@@ -45,17 +46,6 @@ const AuthForm = ({ labelArr, titleObj }: AuthFormProps) => {
       setErrMsg("유저 정보를 가져올 수 없습니다.");
       return;
     }
-
-    if (result.success === true && result.session?.access_token) {
-      console.log(result);
-      const { data, error } = supabase
-        .from("user")
-        .select("*")
-        .eq("id", result.session.user.id)
-        .single();
-      console.log(data);
-      console.log(error);
-      return;
       // naviTo("/");
     }
   };

@@ -1,6 +1,11 @@
 import { create } from "zustand";
 
-export const useUserStore = create(() => ({
-  accessToken: "",
-  setAccessToken: (token: string) => set({ accessToken: token }),
+type UserAuthState = {
+  userName: string;
+  setUserName: (name: string) => void;
+};
+
+export const userAuthStore = create<UserAuthState>(set => ({
+  userName: "",
+  setUserName: (name: string) => set({ userName: name }),
 }));

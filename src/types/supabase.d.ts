@@ -34,24 +34,24 @@ export type Database = {
   };
   public: {
     Tables: {
-      user: {
+      usersData: {
         Row: {
           created_at: string;
           email: string | null;
-          id: string;
           name: string | null;
+          uuid: string;
         };
         Insert: {
           created_at?: string;
           email?: string | null;
-          id?: string;
           name?: string | null;
+          uuid?: string;
         };
         Update: {
           created_at?: string;
           email?: string | null;
-          id?: string;
           name?: string | null;
+          uuid?: string;
         };
         Relationships: [];
       };
